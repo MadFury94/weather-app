@@ -15,7 +15,7 @@
           @click="toggleModal"
         ></i>
         <i
-          class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"
+          class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer hover:`Click here`"
           @click="addCity"
         >
         </i>
@@ -55,13 +55,14 @@
 </template>
 
 <script setup>
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
 import BaseModal from "./BaseModal.vue";
 import { uid } from "uid";
 
-const savedCities = ref();
+const savedCities = ref([]);
 const route = useRoute();
+const router = useRouter();
 const addCity = () => {
   if (localStorage.getItem("savedCities")) {
     savedCities.value = JSON.parse(localStorage.getItem("savedCities"));
@@ -76,6 +77,13 @@ const addCity = () => {
       lng: route.query.lng,
     },
   };
+
+  savedCities.value.push(locationObj);
+  localStorage.setItem("savedCities", JSON.stringify(savedCities.value));
+
+  let query = Object.assign({}, route.query);
+  delete query.preview;
+  router.replace({ query });
 };
 
 const modalActive = ref(null);
