@@ -17,6 +17,7 @@
         <i
           class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer hover:`Click here`"
           @click="addCity"
+          v-if="route.query.preview"
         >
         </i>
       </div>
