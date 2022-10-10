@@ -27,6 +27,7 @@
           >
             {{ searchResult.place_name }}
           </li>
+          <i cl></i>
         </template>
       </ul>
     </div>
