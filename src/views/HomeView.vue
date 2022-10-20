@@ -13,7 +13,7 @@
         v-if="mapboxSearchResults"
       >
         <p class="py-2" v-if="searchError">
-          Sorry, Something went wrong, please try again.
+          Sorry, something went wrong, please try again.
         </p>
         <p class="py-2" v-if="!searchError && mapboxSearchResults.length === 0">
           No results match your query, try a different term.
@@ -27,16 +27,13 @@
           >
             {{ searchResult.place_name }}
           </li>
-          <i cl></i>
         </template>
       </ul>
     </div>
     <div class="flex flex-col gap-4">
       <Suspense>
         <CityList />
-        <template #fallback>
-          <p>Loading...</p>
-        </template>
+        <template #fallback> <!-- <CityCardSkeleton /> -->loading... </template>
       </Suspense>
     </div>
   </main>
@@ -51,10 +48,10 @@ import CityList from "../components/CityList.vue";
 const router = useRouter();
 const previewCity = (searchResult) => {
   const [city, state] = searchResult.place_name.split(",");
-  console.log(city, state);
+
   router.push({
     name: "cityView",
-    params: { state: state.replaceAll, city: city },
+    params: { state: state, city: city },
     query: {
       lat: searchResult.geometry.coordinates[1],
       lng: searchResult.geometry.coordinates[0],

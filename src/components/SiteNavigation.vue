@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-o bg-weather-primary shadow-lg">
+  <header class="sticky top-0 bg-weather-primary shadow-lg">
     <nav
       class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6"
     >
@@ -9,6 +9,7 @@
           <p class="text-2xl">The Local Weather</p>
         </div>
       </RouterLink>
+
       <div class="flex gap-3 flex-1 justify-end">
         <i
           class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"
@@ -17,7 +18,7 @@
         <i
           class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer hover:`Click here`"
           @click="addCity"
-          v-if="route.query.preview"
+          v-if="route.query"
         >
         </i>
       </div>
@@ -58,8 +59,8 @@
 <script setup>
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
-import BaseModal from "./BaseModal.vue";
 import { uid } from "uid";
+import BaseModal from "./BaseModal.vue";
 
 const savedCities = ref([]);
 const route = useRoute();

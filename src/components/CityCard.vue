@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>{{ city.city }}</h1>
+  <div class="flex flex-col flex-1 cursor-pointer">
+    <h2 class="text-2xl">{{ city.city }}</h2>
+    <h3>{{ city.state }}</h3>
   </div>
 </template>
 
