@@ -7,7 +7,7 @@
     >
       <p>
         You are currently previewing this city, click the "+" icon to start
-        tracking this city.
+        tracking this city..
       </p>
     </div>
     <!-- Weather Overview -->
