@@ -37,16 +37,21 @@
           <CityCardSkeleton />
         </template>
       </Suspense>
-      <div class="p-10 py-6 text-center">
+      <div class="p-10 py-44 text-center">
         <h1>Click button below to view Design & Prototyping</h1>
 
         <div class="text-center py-4">
           <a
             class="px-6 py-3 border-transparent bg-weather-secondary rounded-lg hover:bg-weather-primary"
-            href="https://www.figma.com/proto/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1"
+            href="https://www.figma.com/proto/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=4%3A774&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1"
             target="#"
             >Visit</a
           >
+        </div>
+        <div class="text-base pt-40">
+          <p class="text-xs font-light">
+            HINT: Click on the "information" icon to view navigation steps
+          </p>
         </div>
       </div>
     </div>
