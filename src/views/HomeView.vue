@@ -45,7 +45,7 @@
             class="px-6 py-3 border-transparent bg-weather-secondary rounded-lg hover:bg-weather-primary"
             href="https://www.figma.com/file/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=0%3A1"
             target="#"
-            >WireFrame & Design</a
+            >WireFrame & Designs</a
           ><a
             class="px-6 py-3 border-transparent bg-white rounded-lg hover:bg-weather-primary hover:text-white text-weather-primary"
             href="https://www.figma.com/proto/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1"
