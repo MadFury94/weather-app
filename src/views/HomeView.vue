@@ -37,6 +37,17 @@
           <CityCardSkeleton />
         </template>
       </Suspense>
+      <div class="text-center">
+        <h1>Click button below to view Design & Prototyping</h1>
+        <button
+          @click="visitLink"
+          class="py-2 border-transparent bg-weather-secondary px-4 rounded-lg hover:bg-weather-primary"
+          a
+          href="https://www.figma.com/proto/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1"
+        >
+          Visit
+        </button>
+      </div>
     </div>
   </main>
 </template>
@@ -89,5 +100,8 @@ const getSearchResults = () => {
     }
     mapboxSearchResults.value = null;
   }, 300);
+};
+const visitLink = {
+  src: "https://www.figma.com/proto/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1",
 };
 </script>
