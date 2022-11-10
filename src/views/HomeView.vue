@@ -38,7 +38,7 @@
         </template>
       </Suspense>
       <div class="p-10 py-44 text-center">
-        <h1>Click button below to view Design & Prototyping</h1>
+        <h1>Click button below to view WireFrame, Design & Prototyping</h1>
 
         <div class="text-center py-4">
           <a
@@ -50,7 +50,11 @@
         </div>
         <div class="text-base pt-40">
           <p class="text-xs font-light">
-            HINT: Click on the "information" icon to view navigation steps
+            HINT: Click on the "information" icon to view navigation steps in
+            Design Prototyping.
+          </p>
+          <p class="text-xs font-light">
+            HINT: Click on the page to navigate in WireFrame Prototyping.
           </p>
         </div>
       </div>
