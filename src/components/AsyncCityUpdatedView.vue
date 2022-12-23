@@ -1,12 +1,16 @@
 <template>
-  <div class="px-16 pt-20">
-    <div class="gap-y-6 lg:flex lg:justify-between">
-      <div class="bg-yellow-400">Weather Dashboard</div>
-      <div>
-        <div class="grid w-full grid-cols-5 bg-green-300">
-          <div class="col-span-4 w-[300px] bg-red-500">item</div>
-          <div>item</div>
+  <div class="px-4 pt-20 md:px-16">
+    <div class="items-center justify-between gap-y-6 py-8 md:flex">
+      <div class="text-white">Weather Dashboard</div>
+      <div class="flex gap-x-4">
+        <div class="flex gap-x-2 rounded-full bg-slate-700 px-2">
+          <button><LocationIcon /></button>
+
+          <input type="text" class="w-[200px] border-2 p-1" />
+
+          <LocationIcon />
         </div>
+        <button>Dark theme</button>
       </div>
     </div>
     <div class="grid gap-8 xl:grid-cols-3">
@@ -52,7 +56,7 @@
                 <li>Cloudiness</li>
               </ul>
             </div>
-            <div class="container rounded-xl border-2">
+            <div class="rounded-xl border-2">
               <div class="card-img-overlay text-center">
                 <i class="fa-solid fa-sun"></i>
                 <h3 lass="fw-light">Sunrise</h3>
@@ -91,3 +95,7 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import LocationIcon from "../components/icons/LocationIcon.vue";
+</script>
