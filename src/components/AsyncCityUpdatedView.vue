@@ -1,6 +1,6 @@
 <template>
   <div class="px-16 pt-20">
-    <div class="lg:flex lg:justify-between gap-y-6">
+    <div class="gap-y-6 lg:flex lg:justify-between">
       <div class="bg-yellow-400">Weather Dashboard</div>
       <div>
         <div class="grid w-full grid-cols-5 bg-green-300">
@@ -9,8 +9,8 @@
         </div>
       </div>
     </div>
-    <div class="grid gap-3 py-10 md:grid-cols-3">
-      <div class="col-span-2 space-x-2 rounded-xl border-2 bg-white py-4">
+    <div class="grid gap-8 xl:grid-cols-3">
+      <div class="space-x-2 rounded-xl border-2 bg-white py-4 xl:col-span-2">
         <div>
           <div class="p-4">
             <h2>Forecast in <span class="location">New York, US</span></h2>
@@ -18,11 +18,11 @@
             <p>Friday, 23 December at 10:27 am</p>
           </div>
 
-          <section class="grid space-x-0 px-4 md:grid-cols-6 md:gap-2">
+          <section class="grid gap-4 space-x-0 px-4 md:grid-cols-6">
             <!-- Description -->
 
             <!-- Weather descr -->
-            <div class="col-span-3 rounded-md bg-blue-300 p-4">
+            <div class="col-span-3 rounded-md border-2 p-4">
               <div class="flex h-full flex-col justify-between">
                 <div class="flex items-start justify-between">
                   <div class="temperature">48F</div>
@@ -43,7 +43,7 @@
             </div>
             <!-- visibility -->
 
-            <div class="col-span-2 mx-auto rounded-xl border-2 bg-blue-300 p-1">
+            <div class="col-span-2 mx-auto rounded-xl border-2 p-1">
               <ul class="w-80 space-y-2 underline underline-offset-8">
                 <li>Visibility</li>
                 <li>Dew Point</li>
@@ -52,7 +52,7 @@
                 <li>Cloudiness</li>
               </ul>
             </div>
-            <div class="container rounded-xl border-2 bg-blue-200">
+            <div class="container rounded-xl border-2">
               <div class="card-img-overlay text-center">
                 <i class="fa-solid fa-sun"></i>
                 <h3 lass="fw-light">Sunrise</h3>
