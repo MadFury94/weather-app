@@ -1,5 +1,5 @@
 <template>
-  <div class=" pt-20 pb-20 px-32">
+  <div class="px-4 pt-20 pb-20 md:px-20">
     <div class="items-center justify-between gap-y-6 py-8 md:flex">
       <div class="text-white">Weather Dashboard</div>
       <div class="flex gap-x-4">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <section>
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-y-8 xl:grid-cols-3 xl:gap-x-8">
         <div class="space-x-2 rounded-xl border-2 bg-white py-4 lg:col-span-2">
           <div>
             <div class="p-4">
@@ -23,13 +23,11 @@
               <p>Friday, 23 December at 10:27 am</p>
             </div>
 
-            <section
-              class="grid grid-cols-3 gap-4 space-x-0 px-4 lg:grid-cols-6"
-            >
+            <section class="grid grid-cols-2 gap-4 px-4">
               <!-- Description -->
 
               <!-- Weather descr -->
-              <div class="col-span-3 rounded-md border-2 p-4 lg:col-span-3">
+              <div class="col-span-2 rounded-md border-2 p-4 lg:col-span-1">
                 <div class="flex h-full flex-col justify-between">
                   <div class="flex items-start justify-between">
                     <div class="temperature">48F</div>
@@ -50,25 +48,29 @@
               </div>
               <!-- visibility -->
 
-              <div class="mx-auto rounded-xl border-2 p-1 lg:col-span-2">
-                <ul class="space-y-2 underline underline-offset-8">
-                  <li>Visibility</li>
-                  <li>Dew Point</li>
-                  <li>Wind</li>
-                  <li>Humidity</li>
-                  <li>Cloudiness</li>
-                </ul>
-              </div>
+              <div class="col-span-2 lg:col-span-1">
+                <div class="grid gap-4 gap-x-4 px-2 md:grid-cols-2">
+                  <div class="rounded-xl border-2">
+                    <ul class="space-y-2 underline underline-offset-8">
+                      <li>Visibility</li>
+                      <li>Dew Point</li>
+                      <li>Wind</li>
+                      <li>Humidity</li>
+                      <li>Cloudiness</li>
+                    </ul>
+                  </div>
 
-              <div class="rounded-xl border-2">
-                <div class="card-img-overlay text-center">
-                  <i class="fa-solid fa-sun"></i>
-                  <h3 lass="fw-light">Sunrise</h3>
-                  <h2 id="sunrise-time">06:35 AM</h2>
-                  <br />
-                  <i class="fa-solid fa-moon"></i>
-                  <h3 lass="fw-lighter">Sunset</h3>
-                  <h2 id="sunset-time">06:26 PM</h2>
+                  <div class="rounded-xl border-2">
+                    <div class="card-img-overlay text-center">
+                      <i class="fa-solid fa-sun"></i>
+                      <h3 lass="fw-light">Sunrise</h3>
+                      <h2 id="sunrise-time">06:35 AM</h2>
+                      <br />
+                      <i class="fa-solid fa-moon"></i>
+                      <h3 lass="fw-lighter">Sunset</h3>
+                      <h2 id="sunset-time">06:26 PM</h2>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
