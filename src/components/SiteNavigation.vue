@@ -1,14 +1,16 @@
 <template>
-  <header class="sticky top-o bg-weather-primary shadow-lg">
+  <header class="sticky top-0 bg-weather-primary shadow-lg grid grid-cols-2">
     <nav
       class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6"
     >
       <RouterLink :to="{ name: 'home' }">
         <div class="flex items-center gap-3">
-          <i class="fa-solid fa-sun text-2xl"></i>
-          <p class="text-2xl">The Local Weather</p>
+          <img class="w-10" src="/clear-day.svg" alt="weather" />
+
+          <p class="text-2xl">Local Weather App</p>
         </div>
       </RouterLink>
+
       <div class="flex gap-3 flex-1 justify-end">
         <i
           class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"
@@ -17,7 +19,7 @@
         <i
           class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer hover:`Click here`"
           @click="addCity"
-          v-if="route.query.preview"
+          v-if="route.query"
         >
         </i>
       </div>
@@ -58,8 +60,9 @@
 <script setup>
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
-import BaseModal from "./BaseModal.vue";
 import { uid } from "uid";
+import BaseModal from "./BaseModal.vue";
+import NewNavigation from "./NewNavigation.vue";
 
 const savedCities = ref([]);
 const route = useRoute();
@@ -84,6 +87,7 @@ const addCity = () => {
 
   let query = Object.assign({}, route.query);
   delete query.preview;
+  query.id = locationObj.id;
   router.replace({ query });
 };
 

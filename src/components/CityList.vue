@@ -2,6 +2,10 @@
   <div v-for="city in savedCities" :key="city.id">
     <CityCard :city="city" @click="goToCityView(city)" />
   </div>
+
+  <p v-if="savedCities.length === 0">
+    No locations added. To start tracking a location, search in the field above.
+  </p>
 </template>
 
 <script setup>
@@ -26,12 +30,16 @@ const getCities = async () => {
 
     const weatherData = await Promise.all(requests);
 
+    await new Promise((res) => setTimeout(res, 1000));
+
     weatherData.forEach((value, index) => {
       savedCities.value[index].weather = value.data;
     });
   }
 };
 await getCities();
+getCities().catch(console.error);
+
 const router = useRouter();
 const goToCityView = (city) => {
   router.push({

@@ -13,7 +13,7 @@
         v-if="mapboxSearchResults"
       >
         <p class="py-2" v-if="searchError">
-          Sorry, Something went wrong, please try again.
+          Sorry, something went wrong, please try again.
         </p>
         <p class="py-2" v-if="!searchError && mapboxSearchResults.length === 0">
           No results match your query, try a different term.
@@ -27,7 +27,6 @@
           >
             {{ searchResult.place_name }}
           </li>
-          <i cl></i>
         </template>
       </ul>
     </div>
@@ -35,9 +34,37 @@
       <Suspense>
         <CityList />
         <template #fallback>
-          <p>Loading...</p>
+          <CityCardSkeleton />
         </template>
       </Suspense>
+      <div class="p-10 py-44 text-center">
+        <h1>
+          Click buttons below to view WireFrames / Design(W & D) & Prototype
+        </h1>
+
+        <div class="text-center py-4">
+          <a
+            class="px-6 py-3 border-transparent bg-weather-secondary rounded-lg hover:bg-weather-primary"
+            href="https://www.figma.com/file/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=0%3A1"
+            target="#"
+            >W & D</a
+          ><a
+            class="px-6 py-3 border-transparent bg-white rounded-lg hover:bg-weather-primary hover:text-white text-weather-primary"
+            href="https://www.figma.com/proto/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1"
+            target="#"
+            >Prototype</a
+          >
+        </div>
+        <div class="text-base pt-40">
+          <p class="text-xs font-light">
+            HINT: Click on the "information" icon to view navigation steps in
+            Design Prototyping.
+          </p>
+          <p class="text-xs font-light">
+            HINT: Click on the page to navigate in WireFrame Prototyping.
+          </p>
+        </div>
+      </div>
     </div>
   </main>
 </template>
@@ -47,14 +74,15 @@ import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import CityList from "../components/CityList.vue";
+import CityCardSkeleton from "../components/CityCardSkeleton.vue";
 
 const router = useRouter();
 const previewCity = (searchResult) => {
   const [city, state] = searchResult.place_name.split(",");
-  console.log(city, state);
+
   router.push({
     name: "cityView",
-    params: { state: state.replaceAll, city: city },
+    params: { state: state, city: city },
     query: {
       lat: searchResult.geometry.coordinates[1],
       lng: searchResult.geometry.coordinates[0],
