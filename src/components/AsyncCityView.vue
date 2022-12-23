@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col flex-1 items-center">
+  <div v-if="false" class="flex flex-col flex-1 items-center">
     <!-- Banner -->
     <div
       v-if="route.query.preview"
@@ -110,7 +110,7 @@
       <p>Remove City</p>
     </div>
   </div>
-  <div class="text-4xl bg-red-500">item</div>
+
   <Section class="py-10 px-16 grid md:grid-cols-3 gap-3">
     <div class="border-2 py-4 col-span-2 rounded-xl bg-white space-x-2">
       <div>
@@ -219,6 +219,8 @@
       </ol>
     </div>
   </Section>
+
+  
 </template>
 
 <script setup>
