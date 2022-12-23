@@ -2,18 +2,16 @@
   <div class="px-4 pt-20 pb-20 md:px-20">
     <div class="items-center justify-between gap-y-6 py-8 md:flex">
       <div class="text-white">Weather Dashboard</div>
-      <div class="flex gap-x-4">
-        <div class="flex gap-x-2 rounded-full bg-slate-700 px-2">
-          <button><LocationIcon /></button>
 
-          <input type="text" class="w-[200px] border-2 p-1" />
+      {{ store.search }}
+      
+      <WeatherSearcherComponent />
 
-          <LocationIcon />
-        </div>
-        <button>Dark theme</button>
-      </div>
+
+
     </div>
     <section>
+      ¬
       <div class="grid grid-cols-1 gap-y-8 xl:grid-cols-3 xl:gap-x-8">
         <div class="space-x-2 rounded-xl border-2 bg-white py-4 lg:col-span-2">
           <div>
@@ -123,5 +121,10 @@
 </template>
 
 <script setup>
-import LocationIcon from "../components/icons/LocationIcon.vue";
+
+import { useWeatherStore } from "../store/store.js";
+
+import WeatherSearcherComponent from "./WeatherSearcherComponent.vue";
+
+const store = useWeatherStore();
 </script>

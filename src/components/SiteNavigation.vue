@@ -1,7 +1,9 @@
 <template>
-  <header class="sticky top-0 bg-weather-primary shadow-lg grid grid-cols-2">
+  <header
+    class="sticky top-0 grid grid-cols-2 place-items-center bg-weather-primary shadow-lg"
+  >
     <nav
-      class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6"
+      class="container flex flex-col items-center gap-4 py-6 text-white sm:flex-row"
     >
       <RouterLink :to="{ name: 'home' }">
         <div class="flex items-center gap-3">
@@ -11,13 +13,13 @@
         </div>
       </RouterLink>
 
-      <div class="flex gap-3 flex-1 justify-end">
+      <div class="flex flex-1 justify-end gap-3">
         <i
-          class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"
+          class="fa-solid fa-circle-info cursor-pointer text-xl duration-150 hover:text-weather-secondary"
           @click="toggleModal"
         ></i>
         <i
-          class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer hover:`Click here`"
+          class="fa-solid fa-plus hover:`Click here` cursor-pointer text-xl duration-150 hover:text-weather-secondary"
           @click="addCity"
           v-if="route.query"
         >
@@ -26,13 +28,13 @@
 
       <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
         <div class="text-black">
-          <h1 class="text-2xl mb-1">About:</h1>
+          <h1 class="mb-1 text-2xl">About:</h1>
           <p class="mb-4">
             The Local Weather allows you to track the current and future weather
             of cities of your choosing.
           </p>
           <h2 class="text-2xl">How it works:</h2>
-          <ol class="list-decimal list-inside mb-4">
+          <ol class="mb-4 list-inside list-decimal">
             <li>
               Search for your city by entering the name into the search bar.
             </li>
@@ -54,6 +56,9 @@
         </div>
       </BaseModal>
     </nav>
+    <div>
+      <WeatherSearcherComponent />
+    </div>
   </header>
 </template>
 
@@ -63,6 +68,11 @@ import { ref } from "vue";
 import { uid } from "uid";
 import BaseModal from "./BaseModal.vue";
 import NewNavigation from "./NewNavigation.vue";
+
+import { useWeatherStore } from "../store/store.js";
+import WeatherSearcherComponent from "./WeatherSearcherComponent.vue";
+
+const store = useWeatherStore();
 
 const savedCities = ref([]);
 const route = useRoute();

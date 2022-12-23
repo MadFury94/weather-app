@@ -1,15 +1,15 @@
 <template>
   <main class="container text-white">
-    <div class="pt-4 mb-8 relative">
+    <div class="relative mb-8 pt-4">
       <input
         type="text"
         v-model="searchQuery"
         @input="getSearchResults"
         placeholder="Search for a city or state"
-        class="py-2 px-1 w-full bg-transparent border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]"
+        class="w-full border-b bg-transparent py-2 px-1 focus:border-weather-secondary focus:shadow-[0px_1px_0_0_#004E71] focus:outline-none"
       />
       <ul
-        class="absolute bg-weather-secondary text-white w-full shadow-md py-2 px-1 top-[66px]"
+        class="absolute top-[66px] w-full bg-weather-secondary py-2 px-1 text-white shadow-md"
         v-if="mapboxSearchResults"
       >
         <p class="py-2" v-if="searchError">
@@ -22,7 +22,7 @@
           <li
             v-for="searchResult in mapboxSearchResults"
             :key="searchResult.id"
-            class="py-2 cursor-pointer"
+            class="cursor-pointer py-2"
             @click="previewCity(searchResult)"
           >
             {{ searchResult.place_name }}
@@ -42,20 +42,20 @@
           Click buttons below to view WireFrames / Design(W & D) & Prototype
         </h1>
 
-        <div class="text-center py-4">
+        <div class="py-4 text-center">
           <a
-            class="px-6 py-3 border-transparent bg-weather-secondary rounded-lg hover:bg-weather-primary"
+            class="rounded-lg border-transparent bg-weather-secondary px-6 py-3 hover:bg-weather-primary"
             href="https://www.figma.com/file/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=0%3A1"
             target="#"
             >W & D</a
           ><a
-            class="px-6 py-3 border-transparent bg-white rounded-lg hover:bg-weather-primary hover:text-white text-weather-primary"
+            class="rounded-lg border-transparent bg-white px-6 py-3 text-weather-primary hover:bg-weather-primary hover:text-white"
             href="https://www.figma.com/proto/5SAe2TN4zyUMiBZ88VlM3g/Weather-App-Wireframe?node-id=1%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1"
             target="#"
             >Prototype</a
           >
         </div>
-        <div class="text-base pt-40">
+        <div class="pt-40 text-base">
           <p class="text-xs font-light">
             HINT: Click on the "information" icon to view navigation steps in
             Design Prototyping.
@@ -91,9 +91,8 @@ const previewCity = (searchResult) => {
   });
 };
 
-const mapboxAPIKey =
-  "pk.eyJ1Ijoiam9obmtvbWFybmlja2kiLCJhIjoiY2t5NjFzODZvMHJkaDJ1bWx6OGVieGxreSJ9.IpojdT3U3NENknF6_WhR2Q";
-const searchQuery = ref("");
+const mapboxAPIKey = import.meta.env.VITE_MAPBOX_API_KEY
+  const searchQuery = ref("");
 const queryTimeout = ref(null);
 const mapboxSearchResults = ref(null);
 const searchError = ref(null);

@@ -1,7 +1,10 @@
 <template>
   <div>
     <Suspense>
-      <AsyncCityView />
+      <div>
+        <AsyncCityView />
+        <AsyncCityViewUpdate />
+      </div>
       <template #fallback>
         <CityViewSkeleton />
       </template>
@@ -10,7 +13,7 @@
 </template>
 
 <script setup>
-// import AsyncCityView from "../components/AsyncCityView.vue";
-import AsyncCityView from "../components/AsyncCityUpdatedView.vue";
+import AsyncCityView from "../components/AsyncCityView.vue";
+import AsyncCityViewUpdate from "../components/AsyncCityUpdatedView.vue";
 import CityViewSkeleton from "../components/CityViewSkeleton.vue";
 </script>
