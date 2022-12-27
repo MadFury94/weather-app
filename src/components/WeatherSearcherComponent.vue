@@ -71,6 +71,5 @@ const previewCity = (searchResult) => {
   });
 
   store.mapboxSearchResults = null;
-  console.log(city, state, "city, state");
 };
 </script>
