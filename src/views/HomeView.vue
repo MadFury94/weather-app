@@ -115,6 +115,6 @@ const getSearchResults = () => {
       return;
     }
     mapboxSearchResults.value = null;
-  }, 300);
+  }, 400);
 };
 </script>

@@ -4,14 +4,10 @@
       <div class="text-white">Weather Dashboard</div>
 
       {{ store.search }}
-      
+
       <WeatherSearcherComponent />
-
-
-
     </div>
     <section>
-      ¬
       <div class="grid grid-cols-1 gap-y-8 xl:grid-cols-3 xl:gap-x-8">
         <div class="space-x-2 rounded-xl border-2 bg-white py-4 lg:col-span-2">
           <div>
@@ -121,10 +117,11 @@
 </template>
 
 <script setup>
-
 import { useWeatherStore } from "../store/store.js";
 
 import WeatherSearcherComponent from "./WeatherSearcherComponent.vue";
 
 const store = useWeatherStore();
+
+
 </script>

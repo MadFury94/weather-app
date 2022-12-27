@@ -7,16 +7,11 @@ import { defineStore } from "pinia";
 // the first argument is a unique id of the store across your application
 export const useWeatherStore = defineStore("weather-store", {
   state: () => ({
-    search: "port harcourt",
     searchResult: [
-      "Porto Alegre, Rio Grande do Sul, Brazil",
-      "Portland, Oregon, United States",
-      "Porto Velho, Rondônia, Brazil",
-      "Portsmouth, City Of Portsmouth, England, United Kingdom",
-      "Portsmouth, Virginia, United States",
+
     ],
     queryTimeout: null,
-    searchQuery: "",
+    searchQuery: "port harcourt",
     mapboxSearchResults: null,
     searchError: null,
     mapboxAPIKey: import.meta.env.VITE_MAPBOX_API_KEY,
@@ -26,10 +21,10 @@ export const useWeatherStore = defineStore("weather-store", {
     getSearchResults() {
       clearTimeout(this.queryTimeout);
       this.queryTimeout = setTimeout(async () => {
-        if (this.search !== "") {
+        if (this.searchQuery !== "") {
           try {
             const result = await axios.get(
-              `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIKey}&types=place`
+              `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.searchQuery}.json?access_token=${this.mapboxAPIKey}&types=place`
             );
 
             this.mapboxSearchResults = result.data.features;
@@ -42,6 +37,10 @@ export const useWeatherStore = defineStore("weather-store", {
         }
         this.mapboxSearchResults = null;
       }, 300);
+    },
+
+    sayHello() {
+      console.log("hello i am a sore action");
     },
   },
   // other options...
