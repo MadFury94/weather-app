@@ -15,7 +15,26 @@
                 <span class="location">{{ route.params.city }}</span>
               </h2>
 
-              <p>Friday, 23 December at 10:27 am</p>
+              <p class="mb-12 text-sm">
+                {{
+                  new Date(weatherData.currentTime).toLocaleDateString(
+                    "en-us",
+                    {
+                      weekday: "short",
+                      day: "2-digit",
+                      month: "long",
+                    }
+                  )
+                }}
+                {{
+                  new Date(weatherData.currentTime).toLocaleTimeString(
+                    "en-us",
+                    {
+                      timeStyle: "short",
+                    }
+                  )
+                }}
+              </p>
             </div>
 
             <section class="grid grid-cols-2 gap-4 px-4">
@@ -33,9 +52,9 @@
                       <div>Low 45°F</div>
                     </div>
                   </div>
-                  <div class="flex items-start justify-between">
+                  <div class="flex items-start justify-between capitalize">
                     <ul>
-                      <li>Mist</li>
+                      <li>{{ weatherData.current.weather[0].description }}</li>
                       <li>
                         Feels like
                         {{ Math.round(weatherData.current.feels_like) }}&deg;F
@@ -43,7 +62,13 @@
 
                       <li>Poor Visibility</li>
                     </ul>
-                    <div>IMG</div>
+                    <div>
+                      <img
+                        class="h-auto w-[100px] items-start"
+                        :src="`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`"
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -51,18 +76,33 @@
 
               <div class="col-span-2 lg:col-span-1">
                 <div class="grid gap-4 gap-x-4 px-2 md:grid-cols-2">
-                  <div class="rounded-xl border-2">
+                  <div class="rounded-xl border-2 py-2">
                     <ul class="space-y-2 underline underline-offset-8">
-                      <li>Visibility</li>
-                      <li>Dew Point</li>
-                      <li>Wind</li>
-                      <li>Humidity</li>
-                      <li>Cloudiness</li>
+                      <li class="flex justify-between px-2">
+                        Visibility
+                        <div>{{ weatherData.current.feels_like }}Km</div>
+                      </li>
+                      <li class="flex justify-between px-2">
+                        Dew Point
+                        <div>{{ weatherData.current.dew_point }}&deg;F</div>
+                      </li>
+                      <li class="flex justify-between px-2">
+                        Wind
+                        <div>{{ weatherData.current.wind_gust }}mph</div>
+                      </li>
+                      <li class="flex justify-between px-2">
+                        Humidity
+                        <div>{{ weatherData.current.humidity }}%</div>
+                      </li>
+                      <li class="flex justify-between px-2">
+                        Cloudiness
+                        <div>{{ weatherData.current.clouds }}%</div>
+                      </li>
                     </ul>
                   </div>
 
                   <div class="rounded-xl border-2">
-                    <div class="card-img-overlay text-center">
+                    <div class="card-img-overlay space-y-3 text-center">
                       <i class="fa-solid fa-sun"></i>
                       <h3 lass="fw-light">Sunrise</h3>
                       <h2 id="sunrise-time">
@@ -92,17 +132,29 @@
           </div>
           <section class="overflow-x-auto">
             <div class="my-4 grid grid-flow-col place-items-center px-4">
-              <div
-                class="w-full w-[130px] rounded-md border-2"
-                v-for="(item, id) in 7"
-                :key="id"
-              >
+              <div v-for="day in weatherData.daily" :key="day.dt">
                 <div class="flex h-[200px] flex-col justify-between">
-                  <div class="block text-center">Mon{{ item }}</div>
-                  <div class="block text-center">IMG</div>
                   <div class="block text-center">
-                    <div>56°F</div>
-                    <div>56°F</div>
+                    <p class="flex-1">
+                      {{
+                        new Date(day.dt * 1000).toLocaleDateString("en-us", {
+                          weekday: "long",
+                        })
+                      }}
+                    </p>
+                  </div>
+                  <div class="block text-center">
+                    <img
+                      class="h-[50px] w-[50px] object-cover"
+                      :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
+                      alt=""
+                    />
+                  </div>
+                  <div class="block text-center">
+                    <div class="flex flex-1 justify-end gap-2">
+                      <p>{{ Math.round(day.temp.max) }}&deg;F</p>
+                      <p>{{ Math.round(day.temp.min) }}&deg;F</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -118,7 +170,7 @@
             <li v-for="(item, id) in 6" :key="id">
               <div class="flex justify-between border-t py-4">
                 <div class="flex flex-col">
-                  <div>Dubia {{ item }}</div>
+                  <div>City IDs: {{ cityIds }}</div>
                   <div>AE</div>
                 </div>
                 <div>
@@ -190,4 +242,27 @@ function getSunTime(weatherDataTime, timezone) {
     hour12: true,
   });
 }
+const cityIds = [5128581, 2643743, 2968815]; // New York, London, Paris
+
+const mapboxAPIKey = import.meta.env.VITE_MAPBOX_API_KEY;
+
+const baseUrl = "https://api.openweathermap.org/data/2.5/group";
+
+const url = `${baseUrl}?id=${cityIds.join(
+  ","
+)}&units=imperial&appid=${mapboxAPIKey}`;
+
+axios
+  .get(url)
+  .then((response) => {
+    // handle success
+    const city = response.data.list[0];
+    console.log(city.name); // New York
+    console.log(city.sys.country); // US
+    console.log(response.data);
+  })
+  .catch((error) => {
+    // handle error
+    console.error(error);
+  });
 </script>

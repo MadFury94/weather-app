@@ -7,9 +7,7 @@ import { defineStore } from "pinia";
 // the first argument is a unique id of the store across your application
 export const useWeatherStore = defineStore("weather-store", {
   state: () => ({
-    searchResult: [
-
-    ],
+    searchResult: [],
     queryTimeout: null,
     searchQuery: "port harcourt",
     mapboxSearchResults: null,
