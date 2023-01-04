@@ -13,6 +13,7 @@ export const useWeatherStore = defineStore("weather-store", {
     mapboxSearchResults: null,
     searchError: null,
     mapboxAPIKey: import.meta.env.VITE_MAPBOX_API_KEY,
+    cities: [],
   }),
 
   actions: {

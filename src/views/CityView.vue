@@ -2,7 +2,7 @@
   <div>
     <Suspense>
       <div>
-        <AsyncCityView />
+        <!-- <AsyncCityView /> -->
         <AsyncCityViewUpdate />
       </div>
       <template #fallback>

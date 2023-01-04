@@ -48,8 +48,14 @@
                       {{ Math.round(weatherData.current.temp) }}&deg;F
                     </div>
                     <div>
-                      <div>High 49°F</div>
-                      <div>Low 45°F</div>
+                      <div>
+                        Max
+                        {{ Math.round(weatherData.daily[0].temp.max) }}&deg;F
+                      </div>
+                      <div>
+                        Min
+                        {{ Math.round(weatherData.daily[0].temp.max) }}&deg;F
+                      </div>
                     </div>
                   </div>
                   <div class="flex items-start justify-between capitalize">
@@ -151,7 +157,7 @@
                     />
                   </div>
                   <div class="block text-center">
-                    <div class="flex flex-1 justify-end gap-2">
+                    <div class="flex flex-1 justify-end gap-2 text-xs">
                       <p>{{ Math.round(day.temp.max) }}&deg;F</p>
                       <p>{{ Math.round(day.temp.min) }}&deg;F</p>
                     </div>
@@ -161,29 +167,7 @@
             </div>
           </section>
         </div>
-
-        <div class="rounded-xl bg-white p-5">
-          <!-- other cities forecast -->
-          <p>Forecast in Other Cities</p>
-          <!-- Cities and forecast with animations -->
-          <ol>
-            <li v-for="(item, id) in 6" :key="id">
-              <div class="flex justify-between border-t py-4">
-                <div class="flex flex-col">
-                  <div>City IDs: {{ cityIds }}</div>
-                  <div>AE</div>
-                </div>
-                <div>
-                  <div>IMG</div>
-                </div>
-                <div class="flex flex-col">
-                  <div>77F</div>
-                  <div>Clear sky</div>
-                </div>
-              </div>
-            </li>
-          </ol>
-        </div>
+        <OtherCities />
       </div>
     </section>
   </div>
@@ -193,6 +177,7 @@
 import axios from "axios";
 // import { useWeatherStore } from "../store/store.js";
 import { useRoute, useRouter } from "vue-router";
+import OtherCities from "./OtherCities.vue";
 
 import WeatherSearcherComponent from "./WeatherSearcherComponent.vue";
 const route = useRoute();
@@ -242,27 +227,21 @@ function getSunTime(weatherDataTime, timezone) {
     hour12: true,
   });
 }
-const cityIds = [5128581, 2643743, 2968815]; // New York, London, Paris
-
-const mapboxAPIKey = import.meta.env.VITE_MAPBOX_API_KEY;
-
-const baseUrl = "https://api.openweathermap.org/data/2.5/group";
-
-const url = `${baseUrl}?id=${cityIds.join(
-  ","
-)}&units=imperial&appid=${mapboxAPIKey}`;
-
-axios
-  .get(url)
-  .then((response) => {
-    // handle success
-    const city = response.data.list[0];
-    console.log(city.name); // New York
-    console.log(city.sys.country); // US
-    console.log(response.data);
-  })
-  .catch((error) => {
-    // handle error
-    console.error(error);
-  });
+// axios
+//   .get("https://api.openweathermap.org/data/2.5/group", {
+//     params: {
+//       id: "5128581,2643743,2968815", // comma-separated list of city IDs
+//       units: "imperial", // optional, specify temperature units (default is Kelvin)
+//       appid: "your-api-key", // your OpenWeatherMap API key
+//     },
+//   })
+//   .then((response) => {
+//     const cities = response.data.list; // array of weather data for each city
+//     console.log(cities[0].name); // New York
+//     console.log(cities[1].name); // London
+//     console.log(cities[2].name); // Paris
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
 </script>
