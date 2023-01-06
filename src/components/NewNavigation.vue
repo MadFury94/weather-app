@@ -17,8 +17,6 @@
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
 import { uid } from "uid";
-import BaseModal from "./BaseModal.vue";
-import NewNavigation from "./NewNavigation.vue";
 
 const savedCities = ref([]);
 const route = useRoute();
