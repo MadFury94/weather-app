@@ -20,7 +20,10 @@ import { uid } from "uid";
 
 const savedCities = ref([]);
 const route = useRoute();
-
+const addCity = () => {
+  if (localStorage.getItem("savedCities")) {
+    savedCities.value = JSON.parse(localStorage.getItem("savedCities"));
+  }
 
   const locationObj = {
     id: uid(),
