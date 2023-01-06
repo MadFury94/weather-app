@@ -3,13 +3,15 @@
     <div class="items-center justify-between gap-y-6 py-8 md:flex">
       <div class="text-white">Weather Dashboard</div>
 
-      <WeatherSearcherComponent />
+      <!-- <WeatherSearcherComponent /> -->
     </div>
     <section>
       <div class="grid grid-cols-1 gap-y-8 xl:grid-cols-3 xl:gap-x-8">
-        <div class="space-x-2 rounded-xl border-2 bg-white py-4 lg:col-span-2">
+        <div
+          class="space-x-2 rounded-xl border-2 bg-white py-4 dark:bg-black lg:col-span-2"
+        >
           <div>
-            <div class="p-4">
+            <div class="p-4 text-gray-800 dark:text-white">
               <h2>
                 Forecast in
                 <span class="location">{{ route.params.city }}</span>
@@ -37,7 +39,9 @@
               </p>
             </div>
 
-            <section class="grid grid-cols-2 gap-4 px-4">
+            <section
+              class="grid grid-cols-2 gap-4 px-4 text-gray-800 dark:text-white"
+            >
               <!-- Description -->
 
               <!-- Weather descr -->
@@ -66,15 +70,35 @@
                         {{ Math.round(weatherData.current.feels_like) }}&deg;F
                       </li>
 
-                      <li>Poor Visibility</li>
+                      <!-- <li>Poor Visibility</li> -->
                     </ul>
-                    <div>
+                    <template
+                      v-if="
+                        return_my_icons(weatherData.current.weather[0].main)
+                      "
+                    >
+                      <img
+                        class="mr-10 mt-10 w-20 lg:mr-28"
+                        :src="`/images/${return_my_icons(
+                          weatherData.current.weather[0].main
+                        )}`"
+                        alt="Animated cloudy weather"
+                      />
+                    </template>
+                    <template v-else>
                       <img
                         class="h-auto w-[100px] items-start"
                         :src="`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`"
                         alt=""
                       />
-                    </div>
+                    </template>
+                    <!-- <div>
+                      <img
+                        class="h-auto w-[100px] items-start"
+                        :src="`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`"
+                        alt=""
+                      />
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -178,6 +202,7 @@ import axios from "axios";
 // import { useWeatherStore } from "../store/store.js";
 import { useRoute, useRouter } from "vue-router";
 import OtherCities from "./OtherCities.vue";
+import { return_my_icons } from "../export/UtilitiesHelp";
 
 import WeatherSearcherComponent from "./WeatherSearcherComponent.vue";
 const route = useRoute();

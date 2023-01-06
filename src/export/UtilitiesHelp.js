@@ -10,6 +10,9 @@ export function return_my_icons(weatherType) {
     if (weatherType === "Clear") {
       return "clear-day.svg";
     }
+    if (weatherType === "Rain") {
+      return "raindrops.svg";
+    }
   } else {
     console.log("i dont have the icon");
     return my_weather_list.includes(weatherType);
