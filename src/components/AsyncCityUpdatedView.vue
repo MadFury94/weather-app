@@ -40,7 +40,7 @@
             <section class="grid grid-cols-2 gap-4 px-4">
               <!-- Description -->
 
-              <!-- Weather descr -->
+              <!-- Weather description  -->
               <div class="col-span-2 rounded-md border-2 p-4 lg:col-span-1">
                 <div class="flex h-full flex-col justify-between">
                   <div class="flex items-start justify-between">
@@ -176,7 +176,7 @@
 <script setup>
 import axios from "axios";
 // import { useWeatherStore } from "../store/store.js";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import OtherCities from "./OtherCities.vue";
 
 import WeatherSearcherComponent from "./WeatherSearcherComponent.vue";
