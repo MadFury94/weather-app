@@ -6,12 +6,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "weather-primary": "#00668A",
+        "weather-primary": "#E7EDFA",
         "weather-secondary": "#004E71",
       },
     },
     fontFamily: {
-      Roboto: ["Roboto, sans-serif"],
+      TitilliumWeb: ["Titillium Web, sans-serif"],
     },
     container: {
       padding: "2rem",

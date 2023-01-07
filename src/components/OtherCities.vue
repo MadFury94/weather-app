@@ -1,13 +1,19 @@
 <template>
   <div>
-    <div class="rounded-xl bg-white p-5">
+    <div
+      class="dark:text rounded-xl bg-white p-5 text-gray-800 dark:bg-[#2E3540] dark:text-white"
+    >
       <!-- other cities forecast -->
 
-      <p>Forecast in Other Cities</p>
+      <p class="text-3xl">
+        Forecast in Other <span class="font-bold">Cities</span>
+      </p>
       <!-- Cities and forecast with animations -->
       <ol v-if="allCities.length > 0">
         <li v-for="(city, index) in allCities" :key="index">
-          <div class="flex items-center justify-between border-t py-4">
+          <div
+            class="flex cursor-pointer items-center justify-between border-t py-4 hover:bg-[#8fada2] hover:font-semibold dark:hover:bg-[#bfedfb] dark:hover:text-gray-800"
+          >
             <div class="flex flex-col">
               <div>{{ city.name }}</div>
               <div>{{ city.sys.country }}</div>
@@ -40,6 +46,7 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
+import { return_my_icons } from "../export/UtilitiesHelp";
 
 const mapboxAPIKey = import.meta.env.VITE_MAPBOX_API_KEY;
 const allCities = ref([]);

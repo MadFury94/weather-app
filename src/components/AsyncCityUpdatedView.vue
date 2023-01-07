@@ -1,23 +1,25 @@
 <template>
-  <div class="px-4 pt-20 pb-20 md:px-20">
-    <div class="items-center justify-between gap-y-6 py-8 md:flex">
-      <div class="text-white">Weather Dashboard</div>
+  <div class="px-4 pt-20 pb-20 dark:bg-[#242230] md:px-20">
+    <!-- <div class="items-center justify-between gap-y-6 py-8 md:flex">
+      <div class="text-gray-800 dark:text-white sm:px-20 ">
+        Weather Dashboard
+      </div>
 
-      <!-- <WeatherSearcherComponent /> -->
-    </div>
+      <WeatherSearcherComponent />
+    </div> -->
     <section>
-      <div class="grid grid-cols-1 gap-y-8 xl:grid-cols-3 xl:gap-x-8">
+      <div class="grid grid-cols-1 gap-y-8 sm:px-16 xl:grid-cols-3 xl:gap-x-8">
         <div
-          class="space-x-2 rounded-xl border-2 bg-white py-4 dark:bg-black lg:col-span-2"
+          class="space-x-2 rounded-xl border-2 bg-white py-4 dark:bg-gray-700 lg:col-span-2"
         >
           <div>
-            <div class="p-4 text-gray-800 dark:text-white">
+            <div class="p-4 text-4xl text-gray-800 dark:text-white">
               <h2>
                 Forecast in
-                <span class="location">{{ route.params.city }}</span>
+                <span class="font-bold">{{ route.params.city }}</span>
               </h2>
 
-              <p class="mb-12 text-sm">
+              <p class="mb-12 text-xl">
                 {{
                   new Date(weatherData.currentTime).toLocaleDateString(
                     "en-us",
@@ -40,15 +42,17 @@
             </div>
 
             <section
-              class="grid grid-cols-2 gap-4 px-4 text-gray-800 dark:text-white"
+              class="dark:bg dark: grid grid-cols-2 gap-4 px-4 text-gray-800 dark:text-white"
             >
               <!-- Description -->
 
               <!-- Weather description  -->
-              <div class="col-span-2 rounded-md border-2 p-4 lg:col-span-1">
+              <div
+                class="col-span-2 rounded-md border-2 bg-[#bfedfb] p-4 dark:bg-[#242230] lg:col-span-1"
+              >
                 <div class="flex h-full flex-col justify-between">
                   <div class="flex items-start justify-between">
-                    <div class="temperature">
+                    <div class="pb-10 text-3xl font-bold">
                       {{ Math.round(weatherData.current.temp) }}&deg;F
                     </div>
                     <div>
@@ -106,27 +110,59 @@
 
               <div class="col-span-2 lg:col-span-1">
                 <div class="grid gap-4 gap-x-4 px-2 md:grid-cols-2">
-                  <div class="rounded-xl border-2 py-2">
+                  <div class="rounded-xl border-2 bg-[#8FADA2] py-2 font-bold">
                     <ul class="space-y-2 underline underline-offset-8">
                       <li class="flex justify-between px-2">
                         Visibility
-                        <div>{{ weatherData.current.feels_like }}Km</div>
+                        <div class="flex">
+                          {{ weatherData.current.feels_like }}Km
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="h-6 w-5"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                            />
+                          </svg>
+                        </div>
                       </li>
                       <li class="flex justify-between px-2">
                         Dew Point
-                        <div>{{ weatherData.current.dew_point }}&deg;F</div>
+                        <div class="flex">
+                          {{ weatherData.current.dew_point }}&deg;F
+                          <img
+                            class="h-6 w-5"
+                            src="/droplet-solid.svg"
+                            alt=""
+                          />
+                        </div>
                       </li>
                       <li class="flex justify-between px-2">
                         Wind
-                        <div>{{ weatherData.current.wind_gust }}mph</div>
+                        <div class="flex">
+                          {{ weatherData.current.wind_gust }} mph
+                          <img class="h-6 w-5" src="/wind-solid.svg" alt="" />
+                        </div>
                       </li>
                       <li class="flex justify-between px-2">
                         Humidity
-                        <div>{{ weatherData.current.humidity }}%</div>
+                        <div class="flex">
+                          {{ weatherData.current.humidity }}%
+                          <img class="h-6 w-5" src="/water-solid.svg" alt="" />
+                        </div>
                       </li>
                       <li class="flex justify-between px-2">
                         Cloudiness
-                        <div>{{ weatherData.current.clouds }}%</div>
+                        <div class="flex">
+                          {{ weatherData.current.clouds }}%
+                          <img class="h-6 w-5" src="/cloud-solid.svg" alt="" />
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -160,32 +196,50 @@
               </div>
             </section>
           </div>
-          <section class="overflow-x-auto">
+          <section class="overflow-x-scroll">
             <div class="my-4 grid grid-flow-col place-items-center px-4">
               <div v-for="day in weatherData.daily" :key="day.dt">
                 <div class="flex h-[200px] flex-col justify-between">
-                  <div class="block text-center">
-                    <p class="flex-1">
+                  <div class="block text-center text-gray-800 dark:text-white">
+                    <p class="flex-1 pt-8 text-sm">
                       {{
                         new Date(day.dt * 1000).toLocaleDateString("en-us", {
                           weekday: "long",
                         })
                       }}
                     </p>
+                    <template
+                      v-if="
+                        return_my_icons(weatherData.current.weather[0].main)
+                      "
+                    >
+                      <img
+                        class="mr-10 mt-10 w-20 lg:mr-28"
+                        :src="`/images/${return_my_icons(
+                          weatherData.current.weather[0].main
+                        )}`"
+                        alt="Animated cloudy weather"
+                      />
+                    </template>
+                    <template v-else>
+                      <img
+                        class="h-auto w-[100px] items-start"
+                        :src="`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`"
+                        alt=""
+                      />
+                    </template>
+                    <div class="block text-center">
+                      <div class="flex flex-1 justify-end gap-2 text-xs">
+                        <p>{{ Math.round(day.temp.max) }}&deg;F</p>
+                        <p>{{ Math.round(day.temp.min) }}&deg;F</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="block text-center">
-                    <img
+                  <!-- <img
                       class="h-[50px] w-[50px] object-cover"
                       :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
                       alt=""
-                    />
-                  </div>
-                  <div class="block text-center">
-                    <div class="flex flex-1 justify-end gap-2 text-xs">
-                      <p>{{ Math.round(day.temp.max) }}&deg;F</p>
-                      <p>{{ Math.round(day.temp.min) }}&deg;F</p>
-                    </div>
-                  </div>
+                    /> -->
                 </div>
               </div>
             </div>

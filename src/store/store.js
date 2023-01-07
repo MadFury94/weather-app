@@ -9,7 +9,7 @@ export const useWeatherStore = defineStore("weather-store", {
   state: () => ({
     searchResult: [],
     queryTimeout: null,
-    searchQuery: "port harcourt",
+    searchQuery: "",
     mapboxSearchResults: null,
     searchError: null,
     mapboxAPIKey: import.meta.env.VITE_MAPBOX_API_KEY,

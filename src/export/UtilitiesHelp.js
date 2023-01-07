@@ -18,6 +18,10 @@ export function return_my_icons(weatherType) {
 
       case "Mist":
         return "mist.svg";
+        break;
+
+      case "":
+        return "overcast-day.svg";
     }
   } else {
     console.log("i dont have the icon");

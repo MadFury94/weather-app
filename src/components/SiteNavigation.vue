@@ -1,9 +1,9 @@
 <template>
   <header
-    class="sticky top-0 grid grid-cols-2 place-items-center bg-weather-primary shadow-lg"
+    class="sticky top-0 grid grid-cols-2 place-items-center bg-weather-primary shadow-lg dark:bg-[#242230]"
   >
     <nav
-      class="container flex flex-col items-center gap-4 py-6 text-white sm:flex-row"
+      class="container flex flex-col items-center gap-4 py-6 text-gray-800 dark:text-white sm:flex-row"
     >
       <RouterLink :to="{ name: 'home' }">
         <div class="flex items-center gap-3">
